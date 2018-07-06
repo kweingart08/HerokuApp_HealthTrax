@@ -18,6 +18,13 @@
     <ul>
       <li><a href="/sessions/new">Log In</a></li>
       <li><a href="/users/new">Register</a></li>
+      <% if(currentUser) { %>
+        <li>
+          <form action="/sessions?_method=DELETE" method="POST">
+            <input type="submit" value="Logout">            
+          </form>
+        </li>
+      <% } %>
     </ul>
 
   </body>
