@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/app_dev';
 
 // ===== MIDDLEWARE =====
-
+app.use(express.urlencoded({extended:false}));
 
 // ===== CONTROLLERS =====
 const usersController = require("./controllers/users.js");
