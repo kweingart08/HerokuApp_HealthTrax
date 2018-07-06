@@ -5,18 +5,22 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
-
 const mongoose = require("mongoose");
 // **rename database later to name of project
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/app_dev';
 
+
+
+
+// ===== INDEX ROUTE / ROOT PAGE =====
 app.get("/", (req, res)=>{
-  res.send("this works");
+  res.render("index.ejs");
 });
 
 
 
 
+// ===== APP LISTENER AND MONGOOSE CONNECTIONS =====
 app.listen(port, ()=>{
   console.log("-----------------------------");
   console.log("I'm listening on port: ", port);
