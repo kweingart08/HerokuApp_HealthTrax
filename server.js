@@ -16,6 +16,9 @@ app.use(express.urlencoded({extended:false}));
 const usersController = require("./controllers/users.js");
 app.use("/users", usersController);
 
+const sessionsController = require("./controllers/sessions.js");
+app.use("/sessions", sessionsController);
+
 
 // ===== INDEX ROUTE / ROOT PAGE =====
 app.get("/", (req, res)=>{
