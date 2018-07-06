@@ -35,9 +35,12 @@ router.delete("/", (req, res) => {
 });
 
 router.get("/doctor", (req, res) => {
-  res.send("at doctor page to add doctor - this page should have an index with form to post")
+  res.render("sessions/newDoctor.ejs");
 });
 
+router.post("/user", (req, res) => {
+  res.send("posting-at doctor page to add doctor - this page should have an index with form to post");
+});
 
 
 module.exports = router;
