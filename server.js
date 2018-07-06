@@ -6,12 +6,16 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const mongoose = require("mongoose");
 // **rename database later to name of project
-const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/app_dev"
+const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/app_dev';
 
 app.get("/", (req, res)=>{
   res.send("this works");
 });
+
+
+
 
 app.listen(port, ()=>{
   console.log("-----------------------------");
@@ -19,9 +23,7 @@ app.listen(port, ()=>{
   console.log("-----------------------------");
 });
 
-mongoose.connect(mongoUri);
+mongoose.connect(mongoUri, {useNewUrlParser: true});
 mongoose.connection.on("open", () => {
-  console.log("======================");
   console.log("connected to mongoose!");
-  console.log("======================");
 });
