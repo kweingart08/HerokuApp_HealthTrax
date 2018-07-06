@@ -8,9 +8,18 @@ const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 // **rename database later to name of project
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/app_dev';
+const session = require("express-session");
 
 // ===== MIDDLEWARE =====
 app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(express.static("public"));
+
+app.use(session({
+  secret: "feedmeseymour",
+  resave: false,
+  saveUninitialized: false
+}));
 
 // ===== CONTROLLERS =====
 const usersController = require("./controllers/users.js");
