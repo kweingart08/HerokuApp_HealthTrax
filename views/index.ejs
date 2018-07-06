@@ -7,6 +7,14 @@
   <body>
     <h1>Index Page</h1>
 
+    <h1>
+      <% if(currentUser) {%>
+        Welcome <%=currentUser.username%>!
+      <% } else { %>
+        Welcome!
+      <% } %>
+    </h1>
+
     <ul>
       <li><a href="/sessions/new">Log In</a></li>
       <li><a href="/users/new">Register</a></li>

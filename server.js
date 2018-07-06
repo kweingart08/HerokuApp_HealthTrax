@@ -30,8 +30,11 @@ app.use("/sessions", sessionsController);
 
 
 // ===== INDEX ROUTE / ROOT PAGE =====
+// if someone logs in, stores current user information and can be used on index.ejs file
 app.get("/", (req, res)=>{
-  res.render("index.ejs");
+  res.render("index.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
 
 
