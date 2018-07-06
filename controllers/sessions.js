@@ -19,7 +19,9 @@ router.post("/", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  res.send("user");
+  res.render("sessions/userIndex.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
 
 router.delete("/", (req, res) => {
