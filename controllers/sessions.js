@@ -44,12 +44,10 @@ router.get("/newdoctor", (req, res) => {
 
 // ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
-  console.log(req.session.currentUser);
-  console.log(req.body);
+  //new doctor is pushed into the doctors array of the user
   req.session.currentUser.doctors.push(req.body);
-//need to take information from form and create a Doctor
+  //need to take information from form and create a Doctor
   Doctor.create(req.body, (err, createdDoctor)=>{
-    //doctor is created - need to figure out how to push new doctor into users model array of current user
     res.redirect("/sessions/user");
   });
 });
