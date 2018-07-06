@@ -9,8 +9,21 @@
 
     <h1>Welcome <%=currentUser.username%></h1>
 
-    <a href="/sessions/doctor">Add a new doctor</a>
+    <a href="/sessions/newdoctor">Add a new doctor</a>
 
+    <!-- want to go through user doctor array and show the doctors names -->
+
+    <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
+      <div class="doctor">
+        <h4>Doctors</h4>
+        <h4><%=currentUser.doctors[i].name%></h4>
+      </div>
+    <% } %>
+
+
+    <form action="/sessions?_method=DELETE" method="POST">
+      <input type="submit" value="Logout"/>
+    </form>
 
   </body>
 </html>

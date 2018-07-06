@@ -34,12 +34,19 @@ router.delete("/", (req, res) => {
   });
 });
 
-router.get("/doctor", (req, res) => {
+// === IF ADD DOCTOR LINK CLICKED, GO HERE AND SHOW NEW DOCTOR EJS ===
+router.get("/newdoctor", (req, res) => {
   res.render("sessions/newDoctor.ejs");
 });
 
+
+// ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
-  res.send("posting-at doctor page to add doctor - this page should have an index with form to post");
+//need to take information from form and create a Doctor
+  Doctor.create(req.body, (err, createdDoctor)=>{
+    //doctor is created - need to figure out how to push new doctor into users model array of current user
+    res.redirect("/sessions/user");
+  });
 });
 
 
