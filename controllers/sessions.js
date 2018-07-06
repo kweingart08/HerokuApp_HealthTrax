@@ -36,12 +36,17 @@ router.delete("/", (req, res) => {
 
 // === IF ADD DOCTOR LINK CLICKED, GO HERE AND SHOW NEW DOCTOR EJS ===
 router.get("/newdoctor", (req, res) => {
-  res.render("sessions/newDoctor.ejs");
+  res.render("sessions/newDoctor.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
 
 
 // ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
+  console.log(req.session.currentUser);
+  console.log(req.body);
+  req.session.currentUser.doctors.push(req.body);
 //need to take information from form and create a Doctor
   Doctor.create(req.body, (err, createdDoctor)=>{
     //doctor is created - need to figure out how to push new doctor into users model array of current user

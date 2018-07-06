@@ -5,7 +5,7 @@ const Doctor = require("../models/doctors.js");
 const userSchema = Schema({
   username: String,
   password: String,
-  doctors: [{String}]
+  doctors: [String]
 });
 
 const User = mongoose.model("User", userSchema);
