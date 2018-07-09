@@ -70,7 +70,7 @@ router.post("/user/:id/newdoctor", (req, res) => {
   });
 });
 
-
+// === when you click on the doctors name, go to this route and show doctor information ===
 router.get("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
   Doctor.findById(req.params.doctorid, (err, foundDoctor) => {
     console.log(foundDoctor);
@@ -82,18 +82,21 @@ router.get("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
   });
 });
 
+// ===if you click delete, find doctors id inside of the user and delete from user but keep doctor in doctor database===
 router.delete("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
   //find the doctor by id in the users list and delete from users list
   User.findByIdAndUpdate(req.params.userid, {$pull:{doctors: {_id: req.params.doctorid}}}, (err, removeDoc) => {
     res.redirect("/sessions/user/" + req.params.userid)
   });
+});
 
-  // doctors.splicd(req.params.indexOfDoctor, 1); remove the item from the array
-  //find what index the doctor with that id is and splice the array to remove at that index, 1
-
-  // Doctor.findByIdAndRemove(req.params.id, (err, doctor) => {
-  //   res.redirect("/sessions/user")
-  // });
+router.get("/doctor/:userid/:doctorid/:indexOfDoctor/edit", (req, res) => {
+  Doctor.findById(req.params.doctorid, (err, foundDoctor) =>{
+    console.log(foundDoctor);
+    res.render("sessions/doctorEdit.ejs", {
+      doctor: foundDoctor
+    });
+  });
 });
 
 
