@@ -71,21 +71,29 @@ router.post("/user/:id/newdoctor", (req, res) => {
 });
 
 
-
-router.get("/doctor/:id", (req, res) => {
-  Doctor.findById(req.params.id, (err, foundDoctor) => {
+router.get("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
+  Doctor.findById(req.params.doctorid, (err, foundDoctor) => {
     console.log(foundDoctor);
     res.render("sessions/doctorShow.ejs", {
-      doctor: foundDoctor
+      doctor: foundDoctor,
+      user_id: req.params.userid,
+      indexOfDoctor: req.params.indexOfDoctor
     });
   });
 });
 
-router.delete("/doctor/:id", (req, res) => {
+router.delete("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
   //find the doctor by id in the users list and delete from users list
-  Doctor.findByIdAndRemove(req.params.id, (err, doctor) => {
-    res.redirect("/sessions/user")
+  User.findByIdAndUpdate(req.params.userid, {$pull:{doctors: {_id: req.params.doctorid}}}, (err, removeDoc) => {
+    res.redirect("/sessions/user/" + req.params.userid)
   });
+
+  // doctors.splicd(req.params.indexOfDoctor, 1); remove the item from the array
+  //find what index the doctor with that id is and splice the array to remove at that index, 1
+
+  // Doctor.findByIdAndRemove(req.params.id, (err, doctor) => {
+  //   res.redirect("/sessions/user")
+  // });
 });
 
 
