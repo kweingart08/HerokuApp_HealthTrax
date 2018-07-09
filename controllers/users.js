@@ -7,7 +7,7 @@ router.get("/new", (req, res) => {
   res.render("users/new.ejs");
 });
 
-// === when the form is completed, post to /sessions and redirect to index route ===
+// === when the form is completed, post to /users and redirect to index route ===
 router.post("/", (req, res) => {
   User.create(req.body, (err, createdUser) => {
     res.redirect("/");

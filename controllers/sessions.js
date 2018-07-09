@@ -8,12 +8,19 @@ router.get("/new", (req, res) => {
   res.render("sessions/new.ejs");
 });
 
+// ===== LOG OUT OF SESSION / DESTROY SESSION =====
+router.delete("/", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
+
 // === during log in, when submit, find the user or send wrong password ===
 router.post("/", (req, res) => {
   User.findOne({username: req.body.username}, (err, foundUser) => {
     if(req.body.password == foundUser.password){
       req.session.currentUser = foundUser;
-      res.redirect("/sessions/user");
+      res.redirect("/sessions/user/" + foundUser._id);
     } else {
       res.send("wrong password");
     }
@@ -21,18 +28,14 @@ router.post("/", (req, res) => {
 });
 
 // ===== AFTER LOG IN - DIRECT TO /USER AND SHOW USERINDEX.EJS =====
-router.get("/user", (req, res) => {
-  res.render("sessions/userIndex.ejs", {
-    currentUser: req.session.currentUser
+router.get("/user/:id", (req, res) => {
+  User.findById(req.params.id, (err, foundUser) => {
+    res.render("sessions/userIndex.ejs", {
+      currentUser: foundUser
+    });
   });
 });
 
-// ===== LOG OUT OF SESSION / DESTROY SESSION =====
-router.delete("/", (req, res) => {
-  req.session.destroy(() => {
-    res.redirect("/");
-  });
-});
 
 // === IF ADD DOCTOR LINK CLICKED, GO HERE AND SHOW NEW DOCTOR EJS ===
 router.get("/newdoctor", (req, res) => {
@@ -47,6 +50,13 @@ router.get("/doctor/:id", (req, res) => {
     res.render("sessions/doctorShow.ejs", {
       doctor: foundDoctor
     });
+  });
+});
+
+router.delete("/doctor/:id", (req, res) => {
+  //find the doctor by id in the users list and delete from users list
+  Doctor.findByIdAndRemove(req.params.id, (err, doctor) => {
+    res.redirect("/sessions/user")
   });
 });
 
