@@ -103,10 +103,29 @@ router.get("/doctor/:userid/:doctorid/edit", (req, res) => {
 
 // === put route that updates the doctor information after editing ===
 router.put("/doctor/:userid/:doctorid", (req, res) => {
-  console.log(req.params.userid);
-  console.log(req.params.doctorid);
+
   Doctor.findByIdAndUpdate(req.params.doctorid, req.body, {new:true}, (err, updatedDoctor) => {
-    res.redirect("/sessions/doctor/" + req.params.userid + "/" + req.params.doctorid)
+
+    //want to put this updated doctor in the user database
+
+    User.findByIdAndUpdate(req.params.userid,
+      {
+        $pull: {doctors: {_id: req.params.doctorid}},
+        // $push: {doctors: updatedDoctor},
+      },
+      {new:true},
+
+      (err, updatedUser) => {
+
+        User.findByIdAndUpdate(req.params.userid,
+      {
+        $push: {doctors: updatedDoctor}
+      },
+      {new: true},
+      (err, updatedUserAgain) => {
+        res.redirect("/sessions/doctor/" + req.params.userid + "/" + req.params.doctorid);
+      });
+    });
   });
 });
 
