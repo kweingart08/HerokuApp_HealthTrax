@@ -71,7 +71,7 @@ router.post("/user/:id/newdoctor", (req, res) => {
 });
 
 // === when you click on the doctors name, go to this route and show doctor information ===
-router.get("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
+router.get("/doctor/:userid/:doctorid", (req, res) => {
   Doctor.findById(req.params.doctorid, (err, foundDoctor) => {
     console.log(foundDoctor);
     res.render("sessions/doctorShow.ejs", {
@@ -83,19 +83,30 @@ router.get("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
 });
 
 // ===if you click delete, find doctors id inside of the user and delete from user but keep doctor in doctor database===
-router.delete("/doctor/:userid/:doctorid/:indexOfDoctor", (req, res) => {
+router.delete("/doctor/:userid/:doctorid", (req, res) => {
   //find the doctor by id in the users list and delete from users list
   User.findByIdAndUpdate(req.params.userid, {$pull:{doctors: {_id: req.params.doctorid}}}, (err, removeDoc) => {
     res.redirect("/sessions/user/" + req.params.userid)
   });
 });
 
-router.get("/doctor/:userid/:doctorid/:indexOfDoctor/edit", (req, res) => {
+// ===doctor edit route===
+router.get("/doctor/:userid/:doctorid/edit", (req, res) => {
   Doctor.findById(req.params.doctorid, (err, foundDoctor) =>{
     console.log(foundDoctor);
     res.render("sessions/doctorEdit.ejs", {
-      doctor: foundDoctor
+      doctor: foundDoctor,
+      user_id: req.params.userid
     });
+  });
+});
+
+// === put route that updates the doctor information after editing ===
+router.put("/doctor/:userid/:doctorid", (req, res) => {
+  console.log(req.params.userid);
+  console.log(req.params.doctorid);
+  Doctor.findByIdAndUpdate(req.params.doctorid, req.body, {new:true}, (err, updatedDoctor) => {
+    res.redirect("/sessions/doctor/" + req.params.userid + "/" + req.params.doctorid)
   });
 });
 

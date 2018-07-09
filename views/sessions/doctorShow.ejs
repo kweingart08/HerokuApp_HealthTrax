@@ -8,11 +8,11 @@
     <h1>Doctor Show Page</h1>
     <h2><%=doctor.name%></h2>
 
-    <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>/<%=indexOfDoctor%>?_method=DELETE" method="POST">
+    <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=DELETE" method="POST">
       <input type="submit" name="" value="DELETE">
     </form>
 
-    <a href="/sessions/doctor/<%=user_id%>/<%=doctor._id%>/<%=indexOfDoctor%>/edit">Edit</a>
+    <a href="/sessions/doctor/<%=user_id%>/<%=doctor._id%>/edit">Edit</a>
 
   </body>
 </html>

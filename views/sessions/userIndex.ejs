@@ -16,7 +16,7 @@
     <h4>Doctors</h4>
     <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
       <div class="doctor">
-        <h4><a href="/sessions/doctor/<%=currentUser._id%>/<%=currentUser.doctors[i]._id%>/<%=i%>"><%=currentUser.doctors[i].name%></a></h4>
+        <h4><a href="/sessions/doctor/<%=currentUser._id%>/<%=currentUser.doctors[i]._id%>"><%=currentUser.doctors[i].name%></a></h4>
       </div>
     <% } %>
 

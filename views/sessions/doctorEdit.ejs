@@ -7,5 +7,17 @@
   <body>
     <h1>Doctor Edit</h1>
     <%=doctor.name%>
+
+    <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=PUT" method="POST">
+      <input type="text" name="name" placeholder="<%=doctor.name%>"/>
+      <input type="text" name="address" placeholder="<%=doctor.address%>"/>
+      <input type="text" name="phone" placeholder="<%=doctor.phone%>"/>
+      <input type="date" name="last_visit" placeholder="<%=doctor.last_visit%>"/>
+      <input type="date" name="next_visit" placeholder="<%=doctor.next_visit%>"/>
+      <textarea name="note"><%=doctor.note%></textarea>
+      <input type="submit" value="Submit Changes">
+    </form>
+
+
   </body>
 </html>
