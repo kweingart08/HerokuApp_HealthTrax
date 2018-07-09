@@ -41,16 +41,35 @@ router.get("/newdoctor", (req, res) => {
   });
 });
 
+router.get("/doctor", (req, res) => {
+  // Doctor.findOne({name: })
+  res.render("sessions/doctorShow.ejs");
+});
 
 // ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
+  console.log(req.session.currentUser);
   //new doctor is pushed into the doctors array of the user
-  req.session.currentUser.doctors.push(req.body);
-  //need to take information from form and create a Doctor
-  Doctor.create(req.body, (err, createdDoctor)=>{
-    res.redirect("/sessions/user");
+  Doctor.create(req.body, (err, createdDoctor) => {
+    doctor: createdDoctor
   });
-});
 
+  User.findOneAndUpdate(
+    {username: req.session.currentUser.username},
+    {$push: {doctors: req.body}},
+    {new: true},
+    (err, updatedUser) => {
+      res.redirect("/sessions/user");
+    }
+  );
+
+
+
+  // req.session.currentUser.doctors.push(req.body);
+  //need to take information from form and create a Doctor
+  // Doctor.create(req.body, (err, createdDoctor)=>{
+  //   res.redirect("/sessions/user");
+  // });
+});
 
 module.exports = router;

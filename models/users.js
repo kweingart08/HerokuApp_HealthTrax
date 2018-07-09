@@ -5,7 +5,16 @@ const Doctor = require("../models/doctors.js");
 const userSchema = Schema({
   username: String,
   password: String,
-  doctors: [String]
+  doctors: [
+    {
+    name: String,
+    address: String,
+    phone: String,
+    last_visit: Date,
+    next_visit: Date,
+    note: String
+    }
+    ]
 });
 
 const User = mongoose.model("User", userSchema);

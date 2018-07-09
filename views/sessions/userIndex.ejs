@@ -12,11 +12,10 @@
     <a href="/sessions/newdoctor">Add a new doctor</a>
 
     <!-- want to go through user doctor array and show the doctors names -->
-
+    <h4>Doctors</h4>
     <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
       <div class="doctor">
-        <h4>Doctors</h4>
-        <h4><%=currentUser.doctors[i].name%></h4>
+        <h4><a href="/sessions/doctor"><%=currentUser.doctors[i].name%></a></h4>
       </div>
     <% } %>
 
