@@ -111,7 +111,6 @@ router.put("/doctor/:userid/:doctorid", (req, res) => {
     User.findByIdAndUpdate(req.params.userid,
       {
         $pull: {doctors: {_id: req.params.doctorid}},
-        // $push: {doctors: updatedDoctor},
       },
       {new:true},
 
