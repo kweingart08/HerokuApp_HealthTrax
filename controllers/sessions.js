@@ -58,33 +58,28 @@ router.get("/doctor/:id", (req, res) => {
 // ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
   //new doctor is pushed into the doctors array of the user
+  let doctorId;
+  let user = req.session.currentUser.username;
+
   Doctor.create(req.body, (err, createdDoctor) => {
-    // res.redirect("/sessions/user", {
-      doctor: createdDoctor
-    });
+      doctorId = createdDoctor._id;
 
-  User.findOneAndUpdate(
-    {username: req.session.currentUser.username},
-    {$push: {doctors: doctor}},
-    {new: true},
-    (err, updatedUser) => {
-      res.redirect("/sessions/user");
-    }
-  )
-
-//THIS WAS CREATING TWO DIFFERENT IDS FOR THE DOCTOR
-    // User.findOneAndUpdate(
-    //   {username: req.session.currentUser.username},
-    //   {$push: {doctors: req.body}},
-    //   {new: true},
-    //   (err, updatedUser) => {
-    //     res.redirect("/sessions/user");
-    //   }
-    // );
-
-  // });
-
-
+      Doctor.findById(
+        doctorId,
+        (err, foundDoctor) => {
+          console.log(err);
+          User.findOneAndUpdate(
+            {username: user},
+            {$push: {doctors: foundDoctor}},
+            {new: true},
+            (err, updatedUser) => {
+              res.redirect("/sessions/user");
+            }
+          );
+        }
+      );
+  });
 });
+
 
 module.exports = router;
