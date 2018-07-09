@@ -44,25 +44,47 @@ router.get("/newdoctor", (req, res) => {
 router.get("/doctor/:id", (req, res) => {
   // Doctor.findOne({name: })
   //find and show only the doctor with the id
-  
-  res.render("sessions/doctorShow.ejs");
+  console.log(req.params.id);
+  console.log("ObjectId(" + "\"" + req.params.id + "\"" + ")");
+
+  Doctor.findOne({_id: "\"" + "ObjectId(" + "\"" + req.params.id + "\"" + ")" + "\""}, (err, foundDoctor) => {
+    console.log(foundDoctor);
+    res.render("sessions/doctorShow.ejs", {
+      doctor: foundDoctor
+    });
+  });
 });
 
 // ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
 router.post("/user", (req, res) => {
   //new doctor is pushed into the doctors array of the user
   Doctor.create(req.body, (err, createdDoctor) => {
-    doctor: createdDoctor
-  });
+    // res.redirect("/sessions/user", {
+      doctor: createdDoctor
+    });
 
   User.findOneAndUpdate(
     {username: req.session.currentUser.username},
-    {$push: {doctors: req.body}},
+    {$push: {doctors: doctor}},
     {new: true},
     (err, updatedUser) => {
       res.redirect("/sessions/user");
     }
-  );
+  )
+
+//THIS WAS CREATING TWO DIFFERENT IDS FOR THE DOCTOR
+    // User.findOneAndUpdate(
+    //   {username: req.session.currentUser.username},
+    //   {$push: {doctors: req.body}},
+    //   {new: true},
+    //   (err, updatedUser) => {
+    //     res.redirect("/sessions/user");
+    //   }
+    // );
+
+  // });
+
+
 });
 
 module.exports = router;
