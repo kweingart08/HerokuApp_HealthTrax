@@ -42,12 +42,7 @@ router.get("/newdoctor", (req, res) => {
 });
 
 router.get("/doctor/:id", (req, res) => {
-  // Doctor.findOne({name: })
-  //find and show only the doctor with the id
-  console.log(req.params.id);
-  console.log("ObjectId(" + "\"" + req.params.id + "\"" + ")");
-
-  Doctor.findOne({_id: "\"" + "ObjectId(" + "\"" + req.params.id + "\"" + ")" + "\""}, (err, foundDoctor) => {
+  Doctor.findById(req.params.id, (err, foundDoctor) => {
     console.log(foundDoctor);
     res.render("sessions/doctorShow.ejs", {
       doctor: foundDoctor
