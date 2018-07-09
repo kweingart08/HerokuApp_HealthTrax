@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
   });
 });
 
-// ===== AFTER LOG IN - DIRECT TO /USER AND SHOW USERINDEX.EJS =====
+// ===== AFTER LOG IN - DIRECT TO /USER/id AND SHOW USERINDEX.EJS =====
 router.get("/user/:id", (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render("sessions/userIndex.ejs", {
@@ -36,13 +36,41 @@ router.get("/user/:id", (req, res) => {
   });
 });
 
-
 // === IF ADD DOCTOR LINK CLICKED, GO HERE AND SHOW NEW DOCTOR EJS ===
-router.get("/newdoctor", (req, res) => {
-  res.render("sessions/newDoctor.ejs", {
-    currentUser: req.session.currentUser
+router.get("/user/:id/newdoctor", (req, res) => {
+  User.findById(req.params.id, (err, foundUser) => {
+    res.render("sessions/newDoctor.ejs", {
+      currentUser: foundUser
+    });
   });
 });
+
+
+// ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
+router.post("/user/:id/newdoctor", (req, res) => {
+  //new doctor is pushed into the doctors array of the user
+  let doctorId;
+
+  Doctor.create(req.body, (err, createdDoctor) => {
+      doctorId = createdDoctor._id;
+
+      Doctor.findById(
+        doctorId,
+        (err, foundDoctor) => {
+          User.findOneAndUpdate(
+            {_id: req.params.id},
+            {$push: {doctors: foundDoctor}},
+            {new: true},
+            (err, updatedUser) => {
+              res.redirect("/sessions/user/" + req.params.id);
+            }
+          );
+        }
+      );
+  });
+});
+
+
 
 router.get("/doctor/:id", (req, res) => {
   Doctor.findById(req.params.id, (err, foundDoctor) => {
@@ -57,32 +85,6 @@ router.delete("/doctor/:id", (req, res) => {
   //find the doctor by id in the users list and delete from users list
   Doctor.findByIdAndRemove(req.params.id, (err, doctor) => {
     res.redirect("/sessions/user")
-  });
-});
-
-// ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
-router.post("/user", (req, res) => {
-  //new doctor is pushed into the doctors array of the user
-  let doctorId;
-  let user = req.session.currentUser.username;
-
-  Doctor.create(req.body, (err, createdDoctor) => {
-      doctorId = createdDoctor._id;
-
-      Doctor.findById(
-        doctorId,
-        (err, foundDoctor) => {
-          console.log(err);
-          User.findOneAndUpdate(
-            {username: user},
-            {$push: {doctors: foundDoctor}},
-            {new: true},
-            (err, updatedUser) => {
-              res.redirect("/sessions/user");
-            }
-          );
-        }
-      );
   });
 });
 
