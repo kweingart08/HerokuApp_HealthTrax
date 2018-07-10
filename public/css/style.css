@@ -308,3 +308,28 @@ textarea:focus {
   background: #f9f6f6;
   border: 2px solid rgba(0, 117, 193, 0.8);
 }
+
+.doctor-show {
+  margin: 15px;
+  padding: 15px;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 3px solid black;
+}
+
+td {
+  padding: 10px;
+  margin: 10px;
+}
+
+.td-title {
+  font-weight: bold;
+  font-size: 20px;
+  background: #00ffa1
+}
