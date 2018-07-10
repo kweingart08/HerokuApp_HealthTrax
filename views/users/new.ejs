@@ -5,13 +5,32 @@
     <title></title>
   </head>
   <body>
-    <h1>Users - New View</h1>
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
 
-    <form action="/users" method="POST">
-      <input type="text" name="username" placeholder="Username"/>
-      <input type="password" name="password" />
-      <input type="submit" value="Create User">
-    </form>
+    <div class="form-container">
+
+      <div class="registration">
+        <form action="/users" method="POST">
+
+          <fieldset class="account-info">
+            <legend>REGISTER NEW USER</legend>
+
+            <label for="username">USERNAME</label>
+            <input type="text" name="username"/>
+
+            <label for="password">PASSWORD</label>
+            <input type="password"/>
+
+            <input type="submit" value="Create New User">
+
+          </fieldset>
+
+        </form>
+      </div>
+
+    </div>
 
   </body>
 </html>

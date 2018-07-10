@@ -18,6 +18,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 h1 {
@@ -89,4 +90,64 @@ h1 {
 
 #index-span {
   color: rgb(0, 117, 193);
+}
+
+
+/* form styles  */
+.registration {
+  width: 50%;
+  border-radius: 0 10px 10px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+fieldset {
+  border: 1px solid #808080;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+legend {
+  padding: 0 10px;
+  color: rgb(0, 117, 193);
+  font-size: 22px;
+}
+
+label {
+  color: rgb(0, 117, 193);
+  display: block;
+}
+
+input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  height: 25px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: 0;
+  border: 1px solid rgb(0, 117, 193);
+}
+
+input[type="submit"]{
+  width: 50%;
+  height: 50px;
+  background: rgba(0, 117, 193, 0.8);
+  box-shadow: 2px 2px #d3d3d3;
+  font-size: 1.3em;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  color: rgba(0, 117, 193, 0.8);
+  background: #f9f6f6;
+  border: 2px solid rgba(0, 117, 193, 0.8);
 }
