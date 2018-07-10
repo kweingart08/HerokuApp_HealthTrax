@@ -6,17 +6,48 @@
   </head>
   <body>
 
+    <nav>
+      <% include ../partials/nav.ejs %>
+      <div class="links">
+        <a href="/sessions/user/<%=currentUser._id%>"><i class="far fa-hand-point-left" class="nav-links"></i> back</a>
+      </div>
+    </nav>
+
+    <div class="form-container">
+      <div class="registration">
+        <form action="/sessions/user/<%=currentUser._id%>/newdoctor" method="POST">
+          <fieldset>
+            <legend>Add New Doctor</legend>
+
+            <label for="type">TYPE</label>
+            <input type="text" name="type"/>
+
+            <label for="name">NAME</label>
+            <input type="text" name="name"/>
+
+            <label for="address">ADDRESS</label>
+            <input type="text" name="address"/>
+
+            <label for="phone">PHONE</label>
+            <input type="text" name="phone"/>
+
+            <label for="last_visit">LAST DATE VISITED</label>
+            <input type="date" name="last_visit"/>
+
+            <label for="next_visit">NEXT DATE TO VISIT</label>
+            <input type="date" name="next_visit"/>
+
+            <label for="note">NOTES</label>
+            <textarea name="note"></textarea>
+
+            <input type="submit" value="Add New Doctor">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
     <%=currentUser.username%>
-    <form action="/sessions/user/<%=currentUser._id%>/newdoctor" method="POST">
-      <input type="text" name="type" placeholder="type"/>
-      <input type="text" name="name" placeholder="name"/>
-      <input type="text" name="address" placeholder="address"/>
-      <input type="text" name="phone" placeholder="phone"/>
-      <input type="date" name="last_visit" placeholder="last_visit"/>
-      <input type="date" name="next_visit" placeholder="next_visit"/>
-      <textarea name="note">notes</textarea>
-      <input type="submit" value="Add New Doctor">
-    </form>
+
 
   </body>
 </html>
