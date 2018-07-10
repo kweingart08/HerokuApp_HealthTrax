@@ -5,26 +5,28 @@
     <title></title>
   </head>
   <body>
-    <h1>USER PAGE</h1>
+    <nav>
+      <% include ../partials/nav.ejs %>
+      <div class="welcome">
+        <h1 id="user-welcome">Welcome,  <%=currentUser.username%>!</h1>
 
-    <h1>Welcome <%=currentUser.username%></h1>
+        <a href="/sessions/user/<%=currentUser._id%>/newdoctor" class="nav-links">Add New Doctor</a>
 
-    <a href="/sessions/user/<%=currentUser._id%>/newdoctor">Add a new doctor</a>
+        <form action="/sessions?_method=DELETE" method="POST">
+          <input type="submit" value="Logout" id="delete"/>
+        </form>
+      </div>
+    </nav>
 
     <!-- want to go through user doctor array and show the doctors names -->
 
     <h4>Doctors</h4>
+
     <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
       <div class="doctor">
         <h4><a href="/sessions/doctor/<%=currentUser._id%>/<%=currentUser.doctors[i]._id%>"><%=currentUser.doctors[i].name%></a></h4>
       </div>
     <% } %>
-
-
-
-    <form action="/sessions?_method=DELETE" method="POST">
-      <input type="submit" value="Logout"/>
-    </form>
 
   </body>
 </html>
