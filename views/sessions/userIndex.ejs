@@ -23,12 +23,23 @@
       <h4 class="doc-header"><i class="fas fa-user-md"></i>Your Doctors</h4>
     </div>
 
+    <div class="all-doctors">
+      <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
+        <div class="doctor">
+          <div class="doc-content1">
+            <h3 class="doc-info"> <%=currentUser.doctors[i].name%></h3>
+          </div>
+          <div class="doc-content2">
+            <h3 class="doc-info"> <%=currentUser.doctors[i].type%></h3>
+          </div>
+          <div class="more-details-doc">
+            <a href="/sessions/doctor/<%=currentUser._id%>/<%=currentUser.doctors[i]._id%>" id="details">View Details</a>
 
-    <% for(let i = 0; i< currentUser.doctors.length; i++) { %>
-      <div class="doctor">
-        <h4><a href="/sessions/doctor/<%=currentUser._id%>/<%=currentUser.doctors[i]._id%>"><%=currentUser.doctors[i].name%></a></h4>
-      </div>
-    <% } %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
 
   </body>
 </html>
