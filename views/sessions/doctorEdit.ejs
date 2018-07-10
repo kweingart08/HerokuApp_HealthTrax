@@ -5,19 +5,50 @@
     <title></title>
   </head>
   <body>
-    <h1>Doctor Edit</h1>
-    <%=doctor.name%>
+    <nav>
+      <% include ../partials/nav.ejs %>
+      <div class="links">
+        <a href="/sessions/user/<%=user_id%>" class="nav-links"><i class="far fa-hand-point-left"></i>Back</a>
+      </div>
+    </nav>
 
-    <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=PUT" method="POST">
-      <input type="text" name="type" placeholder="<%=doctor.type%>"/>
-      <input type="text" name="name" placeholder="<%=doctor.name%>"/>
-      <input type="text" name="address" placeholder="<%=doctor.address%>"/>
-      <input type="text" name="phone" placeholder="<%=doctor.phone%>"/>
-      <input type="date" name="last_visit" placeholder="<%=doctor.last_visit%>"/>
-      <input type="date" name="next_visit" placeholder="<%=doctor.next_visit%>"/>
-      <textarea name="note"><%=doctor.note%></textarea>
-      <input type="submit" value="Submit Changes">
-    </form>
+    <div class="form-container">
+      <div class="registration">
+        <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=PUT" method="POST">
+          <fieldset>
+            <legend>Edit <%=doctor.name%></legend>
+
+            <label for="type">TYPE</label>
+            <input type="text" name="type" value="<%=doctor.type%>"/>
+
+            <label for="name">NAME</label>
+            <input type="text" name="name" value="<%=doctor.name%>"/>
+
+            <label for="address">ADDRESS</label>
+            <input type="text" name="address" value="<%=doctor.address%>"/>
+
+            <label for="phone">PHONE</label>
+            <input type="text" name="phone" value="<%=doctor.phone%>"/>
+
+            <label for="last_visit">LAST DATE VISITED</label>
+            <input type="date" name="last_visit" value="<%=doctor.last_visit%>"/>
+
+            <label for="next_visit">NEXT DATE TO VISIT</label>
+            <input type="date" name="next_visit" value="<%=doctor.next_visit%>"/>
+
+            <label for="note">NOTES</label>
+            <textarea name="note"><%=doctor.note%></textarea>
+
+            <input type="submit" value="Submit Changes">
+            </form>
+
+          </fieldset>
+      </div>
+    </div>
+
+
+
+
 
 
   </body>
