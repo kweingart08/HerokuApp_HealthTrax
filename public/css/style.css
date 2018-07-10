@@ -255,6 +255,7 @@ textarea:focus {
   height: 33%;
   box-sizing: border-box;
   border-bottom: 1px solid #d3d3d3;
+  border-left: 10px solid rgb(0, 117, 193);
 }
 
 .doc-content2 {
@@ -339,4 +340,5 @@ td {
   background: black;
   color: white;
   border: 1px solid white;
+  border-left: 10px solid rgb(0, 117, 193);
 }
