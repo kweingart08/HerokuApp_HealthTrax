@@ -248,7 +248,8 @@ textarea:focus {
 }
 
 .doc-content1 {
-  background: #00ffa1;
+  background: black;
+  color: white;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
@@ -282,11 +283,12 @@ textarea:focus {
   border-radius: 5px;
   border: 1px solid black;
   text-decoration: none;
+  color: rgb(0, 117, 193);
 }
 
 #details:hover {
   border: 1px solid black;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,117,193, 0.8);
   color: white;
 }
 
