@@ -9,6 +9,7 @@
     <%=doctor.name%>
 
     <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=PUT" method="POST">
+      <input type="text" name="type" placeholder="<%=doctor.type%>"/>
       <input type="text" name="name" placeholder="<%=doctor.name%>"/>
       <input type="text" name="address" placeholder="<%=doctor.address%>"/>
       <input type="text" name="phone" placeholder="<%=doctor.phone%>"/>

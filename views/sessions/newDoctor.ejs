@@ -8,6 +8,7 @@
 
     <%=currentUser.username%>
     <form action="/sessions/user/<%=currentUser._id%>/newdoctor" method="POST">
+      <input type="text" name="type" placeholder="type"/>
       <input type="text" name="name" placeholder="name"/>
       <input type="text" name="address" placeholder="address"/>
       <input type="text" name="phone" placeholder="phone"/>

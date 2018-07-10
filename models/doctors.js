@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const User = require("../models/users.js");
 
 const doctorSchema = Schema({
+  type: String,
   name: String,
   address: String,
   phone: String,
