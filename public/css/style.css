@@ -230,6 +230,10 @@ textarea:focus {
   margin: auto;
   margin-top: 30px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-flex-start;
+  flex-wrap: wrap;
 }
 
 .doctor {
