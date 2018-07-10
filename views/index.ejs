@@ -8,13 +8,16 @@
     <!-- add nav partial  -->
     <nav>
       <% include partials/nav.ejs %>
+      <div class="links">
+        <a href="/sessions/new" class="nav-links">Log In</a>
+        <a href="/users/new" class="nav-links">Register</a>
+      </div>
     </nav>
 
-
-    <ul>
-      <li><a href="/sessions/new">Log In</a></li>
-      <li><a href="/users/new">Register</a></li>
-    </ul>
+    <div class="index-container">
+        <h1 id="index-title">Health<span id="index-span">TRAX</span></h1>
+        <p id="front-paragraph">Delivering a solution to keep your doctors organized.</p>
+    </div>
 
   </body>
 </html>
