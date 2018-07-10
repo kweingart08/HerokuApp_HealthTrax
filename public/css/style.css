@@ -205,7 +205,7 @@ input[type="submit"]:hover {
 }
 
 i {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 textarea {
@@ -228,7 +228,7 @@ textarea:focus {
 .all-doctors {
   width: 90%;
   margin: auto;
-  margin: 10px;
+  margin-top: 30px;
   box-sizing: border-box;
 }
 
@@ -250,6 +250,7 @@ textarea:focus {
   font-weight: bold;
   height: 33%;
   box-sizing: border-box;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .doc-content2 {
@@ -283,4 +284,27 @@ textarea:focus {
   border: 1px solid black;
   background: rgba(0,0,0,0.8);
   color: white;
+}
+
+
+#delete-btn {
+  text-decoration: none;
+  padding: 10px;
+  margin: 15px;
+  font-size: 16px;
+  background: rgba(0, 117, 193, 0.8);
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  box-shadow: none;
+  font-family: Raleway;
+  width: auto;
+}
+
+#delete-btn:hover {
+  cursor: pointer;
+  color: rgba(0, 117, 193, 0.8);
+  background: #f9f6f6;
+  border: 2px solid rgba(0, 117, 193, 0.8);
 }

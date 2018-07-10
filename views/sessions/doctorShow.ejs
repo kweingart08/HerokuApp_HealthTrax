@@ -5,14 +5,53 @@
     <title></title>
   </head>
   <body>
-    <h1>Doctor Show Page</h1>
-    <h2><%=doctor.name%></h2>
+    <nav>
+      <% include ../partials/nav.ejs %>
+      <div class="welcome">
+        <a href="/sessions/user/<%=user_id%>" class="nav-links"><i class="far fa-hand-point-left"></i> back</a>
 
-    <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=DELETE" method="POST">
-      <input type="submit" name="" value="DELETE">
-    </form>
+        <a href="/sessions/doctor/<%=user_id%>/<%=doctor._id%>/edit" class="nav-links">Edit Doctor</a>
 
-    <a href="/sessions/doctor/<%=user_id%>/<%=doctor._id%>/edit">Edit</a>
+        <form action="/sessions/doctor/<%=user_id%>/<%=doctor._id%>?_method=DELETE" method="POST">
+          <input type="submit" value="DELETE" id="delete-btn"/>
+        </form>
+      </div>
+    </nav>
+
+    <div class="doc-heading">
+      <h4 class="doc-header"><i class="fas fa-user-md"></i><%=doctor.name%></h4>
+    </div>
+
+    <div class="doctor-show">
+        <div class="doctor-table">
+          <table>
+            <tr>
+              <td>TYPE</td>
+              <td><%=doctor.type%></td>
+            </tr>
+            <tr>
+              <td>ADDRESS</td>
+              <td><%=doctor.address%></td>
+            </tr>
+            <tr>
+              <td>PHONE</td>
+              <td><%=doctor.phone%></td>
+            </tr>
+            <tr>
+              <td>LAST VISITED</td>
+              <td><%=doctor.last_visit%></td>
+            </tr>
+            <tr>
+              <td>NEXT VISIT</td>
+              <td><%=doctor.next_visit%></td>
+            </tr>
+            <tr>
+              <td>NOTES</td>
+              <td><%=doctor.note%></td>
+            </tr>
+          </table>
+      </div>
+    </div>
 
   </body>
 </html>
