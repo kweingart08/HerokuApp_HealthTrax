@@ -5,13 +5,25 @@
     <title></title>
   </head>
   <body>
-    <h1>Sessions New</h1>
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
 
-    <form action="/sessions" method="POST">
-      <input type="text" name="username" placeholder="username"/>
-      <input type="password" name="password" />
-      <input type="submit" value="Log In">
-    </form>
+    <div class="form-container">
+      <div class="registration">
+        <form action="/sessions" method="POST">
+          <fieldset class="account-info">
+            <legend>User Log In</legend>
+            <label for="username">USERNAME</label>
+            <input type="text" name="username"/>
+            <label for="password">PASSWORD</label>
+            <input type="password" name="password"/>
+            
+            <input type="submit" value="Log In">
+          </fieldset>
+        </form>
+      </div>
+    </div>
 
   </body>
 </html>

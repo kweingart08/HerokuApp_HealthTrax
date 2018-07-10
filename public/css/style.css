@@ -53,8 +53,10 @@ h1 {
 }
 
 .nav-links:hover {
+  cursor: pointer;
   color: rgba(0, 117, 193, 0.8);
-  background: white;
+  background: #f9f6f6;
+  border: 2px solid rgba(0, 117, 193, 0.8);
 }
 
 /* index page style  */
