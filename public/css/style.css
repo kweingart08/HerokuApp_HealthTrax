@@ -182,3 +182,24 @@ input[type="submit"]:hover {
   align-items: center;
   box-sizing: border-box;
 }
+
+.doc-heading {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgb(0, 117, 193);
+  background: #f9f6f6;
+  border-top: 2px solid rgb(0, 117, 193);
+  border-bottom: 2px solid rgb(0, 117, 193);
+}
+
+.doc-header {
+  font-size: 32px;
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+}
+
+i {
+  margin-right: 20px;
+}
