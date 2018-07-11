@@ -250,7 +250,6 @@ textarea:focus {
   background: black;
   color: white;
   text-align: center;
-  font-size: 24px;
   font-weight: bold;
   height: 33%;
   box-sizing: border-box;
@@ -266,6 +265,7 @@ textarea:focus {
 .doc-info {
   font-weight: normal;
   margin: 5px;
+  font-size: 24px;
 }
 
 .more-details-doc {
@@ -348,7 +348,7 @@ td {
 
 
 /* mobile style */
-@media(max-width: 600px){
+@media only screen and (max-width: 600px){
 
   .doctor {
     width: 100%;
@@ -359,6 +359,52 @@ td {
     flex-direction: column;
     border-radius: 5px;
     height: 100%;
+  }
+
+  #delete {
+    height: 76px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+
+  .doctor {
+    width: 44%;
+    border: 1px solid rgb(0, 117, 193);
+    box-sizing: border-box;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    height: 100%;
+  }
+
+  .doc-info {
+    font-size: 20px;
+  }
+
+  #delete {
+    height: 58px;
+  }
+
+}
+
+@media only screen and (max-width: 1050px) and (min-width: 768px) {
+
+  .doctor {
+    width: 44%;
+    border: 1px solid rgb(0, 117, 193);
+    box-sizing: border-box;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    height: 100%;
+  }
+
+  .doc-info {
+    font-size: 24px;
   }
 
 }
