@@ -1,21 +1,49 @@
+// ---------------------------------
+// DEPENDENCIES
+// ---------------------------------
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users.js");
+
+// ---------------------------------
+// MODELS
+// ---------------------------------
 const Doctor = require("../models/doctors.js");
 
-// === when click the log in button on the front home page/index, direct to sessions/new and show the new sessions ejs file ===
+
+// ---------------------------------
+// ROUTES
+// ---------------------------------
+// Index  : GET    '/'                                    1/7
+// Show   : GET    '/sessions/user/:id'                   2/7(user)
+// Show   : GET    '/sessions/doctor/:userid/:doctorid'   2/7(doctor)
+// New    : GET    '/sessions/new'                        3/7(user)
+// New    : GET    '/sessions/user/:id/newdoctor'         3/7(doctor)
+// Create : POST   '/sessions'                            4/7(user)
+// Create : POST   '/sessions/user/:id/newdoctor'         4/7(doctor)
+// Edit   : GET    '/sessions/:userid/:doctorid/edit'     5/7(doctor)
+// Update : PUT    '/sessions/:userid/:doctorid'          6/7(doctor)
+// Delete : DELETE '/sessions'                            7/7(user)
+// Delete : DELETE '/sessions/doctor/:userid/:doctorid'   7/7(doctor)
+// ---------------------------------
+
+
+// New    : GET    '/sessions/new'                        3/7(user)
+// When log in button is clicked on front page, render the sessions/new ejs page
 router.get("/new", (req, res) => {
   res.render("sessions/new.ejs");
 });
 
-// ===== LOG OUT OF SESSION / DESTROY SESSION =====
+// Delete : DELETE '/sessions'                            7/7(user)
+// Log out and destroy the sessions - log out button is only shown if there is a user signed in. Redirect to the homepage.
 router.delete("/", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/");
   });
 });
 
-// === during log in, when submit, find the user or send wrong password ===
+// Create : POST   '/sessions'                            4/7(user)
+// When the user logs in, find the user and redirect to that users id page. If wrong, password, send error.
 router.post("/", (req, res) => {
   User.findOne({username: req.body.username}, (err, foundUser) => {
     if(req.body.password == foundUser.password){
@@ -27,7 +55,8 @@ router.post("/", (req, res) => {
   });
 });
 
-// ===== AFTER LOG IN - DIRECT TO /USER/id AND SHOW USERINDEX.EJS =====
+// Show   : GET    '/sessions/user/:id'                   2/7(user)
+// When the user logs in, this redirects to the users id page and shows the userIndex.ejs page. Pulls teh foundUser information to use on the ejs file.
 router.get("/user/:id", (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render("sessions/userIndex.ejs", {
@@ -36,7 +65,8 @@ router.get("/user/:id", (req, res) => {
   });
 });
 
-// === IF ADD DOCTOR LINK CLICKED, GO HERE AND SHOW NEW DOCTOR EJS ===
+// New    : GET    '/sessions/user/:id/newdoctor'         3/7(doctor)
+// When on the user id page, if "add doctor" link is clicked, go to this new route and render the newDoctor.ejs form to fill out.
 router.get("/user/:id/newdoctor", (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render("sessions/newDoctor.ejs", {
@@ -45,15 +75,12 @@ router.get("/user/:id/newdoctor", (req, res) => {
   });
 });
 
-
-// ==== POST NEW DOCTOR - CREATE AND PUSH TO CURRENT PERSON ===
+// Create : POST   '/sessions/user/:id/newdoctor'         4/7(doctor)
+// When the doctor form is completed / submitted, create a Doctor, find the current user and push that doctor into their doctor array.
 router.post("/user/:id/newdoctor", (req, res) => {
-  //new doctor is pushed into the doctors array of the user
   let doctorId;
-
   Doctor.create(req.body, (err, createdDoctor) => {
       doctorId = createdDoctor._id;
-
       Doctor.findById(
         doctorId,
         (err, foundDoctor) => {
@@ -70,7 +97,8 @@ router.post("/user/:id/newdoctor", (req, res) => {
   });
 });
 
-// === when you click on the doctors name, go to this route and show doctor information ===
+// Show   : GET    '/sessions/doctor/:userid/:doctorid'   2/7(doctor)
+// When the doctor details link is clicked, show the details of the doctor for this specific user and render the doctorShow page.
 router.get("/doctor/:userid/:doctorid", (req, res) => {
   Doctor.findById(req.params.doctorid, (err, foundDoctor) => {
     console.log(foundDoctor);
@@ -82,15 +110,16 @@ router.get("/doctor/:userid/:doctorid", (req, res) => {
   });
 });
 
-// ===if you click delete, find doctors id inside of the user and delete from user but keep doctor in doctor database===
+// Delete : DELETE '/sessions/doctor/:userid/:doctorid'   7/7(doctor)
+// When on the doctors show page, if you click delete doctor, find the user and remove that doctor from their list. Redirect to the users show page.
 router.delete("/doctor/:userid/:doctorid", (req, res) => {
-  //find the doctor by id in the users list and delete from users list
   User.findByIdAndUpdate(req.params.userid, {$pull:{doctors: {_id: req.params.doctorid}}}, (err, removeDoc) => {
     res.redirect("/sessions/user/" + req.params.userid)
   });
 });
 
-// ===doctor edit route===
+// Edit   : GET    '/sessions/:userid/:doctorid/edit'     5/7(doctor)
+// When in the doctor show page, if you click edit, render the doctorEdit page.
 router.get("/doctor/:userid/:doctorid/edit", (req, res) => {
   Doctor.findById(req.params.doctorid, (err, foundDoctor) =>{
     console.log(foundDoctor);
@@ -101,13 +130,11 @@ router.get("/doctor/:userid/:doctorid/edit", (req, res) => {
   });
 });
 
-// === put route that updates the doctor information after editing ===
+// Update : PUT    '/sessions/:userid/:doctorid'          6/7(doctor)
+// When submitting the edit form for the doctor, find the doctor in the database, edit the body, then find the current user and remove that doctor and push in the newly updated doctor. Redirect to the doctors show page.
 router.put("/doctor/:userid/:doctorid", (req, res) => {
 
   Doctor.findByIdAndUpdate(req.params.doctorid, req.body, {new:true}, (err, updatedDoctor) => {
-
-    //want to put this updated doctor in the user database
-
     User.findByIdAndUpdate(req.params.userid,
       {
         $pull: {doctors: {_id: req.params.doctorid}},
@@ -128,5 +155,7 @@ router.put("/doctor/:userid/:doctorid", (req, res) => {
   });
 });
 
-
+// ---------------------------------
+// MODULE EXPORTS - access this file in server.js
+// ---------------------------------
 module.exports = router;
