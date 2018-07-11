@@ -1,5 +1,5 @@
 # HealthTRAX
-  TBD  - add details here
+  TBD  
 ## Getting Started
   These instructions within getting started will present any installation needed, and technologies used to create the application.
 ### Installation Instructions
