@@ -1,0 +1,40 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  background-image: url("../img/clouds-404Error.jpg");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  font-family: 'Coda Caption', sans-serif;
+  font-size: 72px;
+  margin: 0;
+}
+
+h2, h4 {
+  font-family: 'Gaegu', cursive;
+  font-size: 36px;
+}
+
+a {
+  text-decoration: none;
+  border: 2px solid white;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Coda Caption', sans-serif;
+  font-size: 28px;
+}
