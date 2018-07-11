@@ -24,39 +24,39 @@
       - Heroku was used to deploy the app online.
 
 
-  ####Details on the App:
-    The App consists of an MVC framework:
-    - Models:
-      - Doctors - There is a doctor model schema used to create the different doctors in the database.  
-      - Users - There is a user model schema used to create the different users for the database.
-    - Views:
-      - There are multiple views that were created for the different routes that are taken while using the app. The main view is the index view or the homepage of the website.
-      - The views are divided into different directories (users, sessions, partials).
-        - The user views consists of the different views coming from the users routes.
-        - The sessions views consists of the different views coming from the sessions routes.
-        - Partials were  used for the head and the navigation bar to more easily use the same head and nav parts for all of the views.
-      - Controllers:
-        - Sessions - The sessions controller connects the models and the views for all of the routes that a logged in user would take.
-        - Users - The users controller connects the models and the views for all of the routes that someone would take when registering to be a user.
+###Details on the App:
+  The App consists of an MVC framework:
+  - Models:
+    - Doctors - There is a doctor model schema used to create the different doctors in the database.  
+    - Users - There is a user model schema used to create the different users for the database.
+  - Views:
+    - There are multiple views that were created for the different routes that are taken while using the app. The main view is the index view or the homepage of the website.
+    - The views are divided into different directories (users, sessions, partials).
+      - The user views consists of the different views coming from the users routes.
+      - The sessions views consists of the different views coming from the sessions routes.
+      - Partials were  used for the head and the navigation bar to more easily use the same head and nav parts for all of the views.
+    - Controllers:
+      - Sessions - The sessions controller connects the models and the views for all of the routes that a logged in user would take.
+      - Users - The users controller connects the models and the views for all of the routes that someone would take when registering to be a user.
 
-      The App uses the 7 RESTful routes for basic operations and for reading and manipulating the collection of data.
+    The App uses the 7 RESTful routes for basic operations and for reading and manipulating the collection of data.
 
-      The routes below can be found in the sessions controller:
-      Index  : GET    '/'                                    1/7
-      Show   : GET    '/sessions/user/:id'                   2/7(user)
-      Show   : GET    '/sessions/doctor/:userid/:doctorid'   2/7(doctor)
-      New    : GET    '/sessions/new'                        3/7(user)
-      New    : GET    '/sessions/user/:id/newdoctor'         3/7(doctor)
-      Create : POST   '/sessions'                            4/7(user)
-      Create : POST   '/sessions/user/:id/newdoctor'         4/7(doctor)
-      Edit   : GET    '/sessions/:userid/:doctorid/edit'     5/7(doctor)
-      Update : PUT    '/sessions/:userid/:doctorid'          6/7(doctor)
-      Delete : DELETE '/sessions'                            7/7(user)
-      Delete : DELETE '/sessions/doctor/:userid/:doctorid'   7/7(doctor)
+    The routes below can be found in the sessions controller:
+    Index  : GET    '/'                                    1/7
+    Show   : GET    '/sessions/user/:id'                   2/7(user)
+    Show   : GET    '/sessions/doctor/:userid/:doctorid'   2/7(doctor)
+    New    : GET    '/sessions/new'                        3/7(user)
+    New    : GET    '/sessions/user/:id/newdoctor'         3/7(doctor)
+    Create : POST   '/sessions'                            4/7(user)
+    Create : POST   '/sessions/user/:id/newdoctor'         4/7(doctor)
+    Edit   : GET    '/sessions/:userid/:doctorid/edit'     5/7(doctor)
+    Update : PUT    '/sessions/:userid/:doctorid'          6/7(doctor)
+    Delete : DELETE '/sessions'                            7/7(user)
+    Delete : DELETE '/sessions/doctor/:userid/:doctorid'   7/7(doctor)
 
-      The routes below can be found in the users controller:
-      New: GET  "/users/new"
-      Create: POST "/users"
+    The routes below can be found in the users controller:
+    New: GET  "/users/new"
+    Create: POST "/users"
 
 ## Development
   These development notes will describe the approach that was taken when building the application as well as some of the unsolved problems.
@@ -73,7 +73,7 @@
     - The added doctor is rendered on the users index page.
     - In order to see all of the doctor details, the user clicks "view details" on the doctors div button. This new rendered view gives the option to edit the details.
     - Doctors can be deleted from the users index page.
-    - User logs out until next time :) 
+    - User logs out until next time :)
 
 ### Unsolved Problems / Additional Items Not Added
   Some additional items that I would like to add to the app:
