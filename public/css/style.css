@@ -368,7 +368,11 @@ td {
   }
 
   #delete {
-    height: 76px;
+    height: 58px;
+  }
+
+  #delete-btn {
+    height: 58px;
   }
 
   .links {
@@ -411,10 +415,6 @@ td {
     font-size: 20px;
   }
 
-  #delete {
-    height: 58px;
-  }
-
   .links {
     display: flex;
     flex-direction: column;
@@ -432,10 +432,10 @@ td {
     display: block;
   }
 
-
   .doctor-table {
     width: 100%;
   }
+
 
 }
 
