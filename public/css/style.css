@@ -316,8 +316,14 @@ textarea:focus {
 }
 
 .doctor-show {
-  margin: 15px;
   padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.doctor-table {
+  width: 50%;
 }
 
 th, td {
@@ -365,6 +371,23 @@ td {
     height: 76px;
   }
 
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .registration {
+    width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  .doctor-table {
+    width: 100%;
+  }
+
 }
 
 @media only screen and (max-width: 768px) and (min-width: 600px) {
@@ -386,6 +409,23 @@ td {
 
   #delete {
     height: 58px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .registration {
+    width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  .doctor-table {
+    width: 100%;
   }
 
 }
