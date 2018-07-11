@@ -19,7 +19,8 @@
   These development notes will describe the approach that was taken when building the application as well as some of the unsolved problems.
 
 ### Approach Taken
-  TBD
+  - 
+  - automatically signs in when registering
 
 ### Unsolved Problems / Additional Items Not Added
   There were a few items that were unsolved or that I didn't get to adding yet:

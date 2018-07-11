@@ -377,6 +377,17 @@ td {
   .links {
     display: flex;
     flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 15px;
+  }
+
+  .nav-links {
+    margin: 5px;
+  }
+
+  h1 {
+    padding-top: 15px;
+    padding-bottom: 0;
   }
 
   .registration {
