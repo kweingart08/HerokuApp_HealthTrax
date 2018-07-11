@@ -74,7 +74,7 @@ h1 {
   height: 100%;
 }
 
-#front-paragraph {
+.front-paragraph {
   font-family: 'Merriweather', serif;
   font-size: 24px;
   max-width: 32%;
