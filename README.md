@@ -24,7 +24,7 @@
       - Heroku was used to deploy the app online.
 
 
-###Details on the App:
+### Details on the App:
   The App consists of an MVC framework:
   - Models:
     - Doctors - There is a doctor model schema used to create the different doctors in the database.  
