@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
           if(err) {
             res.send(err.message)
           } else {
-            res.redirect("/");
+            res.redirect("/sessions/user/" + createdUser._id);
           }
       });
     }
