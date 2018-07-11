@@ -388,6 +388,10 @@ td {
     width: 100%;
   }
 
+  table, tbody, th, td, tr {
+    display: block;
+  }
+
 }
 
 @media only screen and (max-width: 768px) and (min-width: 600px) {
@@ -423,6 +427,11 @@ td {
   nav {
     flex-direction: column;
   }
+
+  table, tbody, th, td, tr {
+    display: block;
+  }
+
 
   .doctor-table {
     width: 100%;
