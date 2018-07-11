@@ -1,17 +1,38 @@
+// ---------------------------------
+// DEPENDENCIES
+// ---------------------------------
 const express = require("express");
 const router = express.Router();
+
+// ---------------------------------
+// MODELS
+// ---------------------------------
 const User = require("../models/users.js");
 
-// ==== GO TO /NEW ROUTE AND SHOW THE NEW EJS PAGE & FORM TO CREATE NEW USE ====
+
+// ---------------------------------
+// ROUTES
+// ---------------------------------
+
+// New: GET  "/users/new"
+// when register button is clicked on homepage - render new.ejs
 router.get("/new", (req, res) => {
   res.render("users/new.ejs");
 });
 
-// === when the form is completed, post to /users and redirect to index route ===
+// Create: POST "/users"
+// Once the register form is completed, create a USER and redirect to homepage
 router.post("/", (req, res) => {
   User.create(req.body, (err, createdUser) => {
-    res.redirect("/");
+    if(err) {
+      res.send(err.message)
+    } else {
+      res.redirect("/");
+    }
   });
 });
 
+// ---------------------------------
+// MODULE EXPORTS - access this file in server.js
+// ---------------------------------
 module.exports = router;
