@@ -9,6 +9,7 @@ const doctorSchema = Schema({
   phone: String,
   last_visit: Date,
   next_visit: Date,
+  url: String,
   note: String
 });
 

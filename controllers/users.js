@@ -21,7 +21,7 @@ router.get("/new", (req, res) => {
 });
 
 // Create: POST "/users"
-// Once the register form is completed, create a USER and redirect to homepage
+// Once the register form is completed, create a USER and redirect to homepage. Make sure that user doesn't already exist.
 router.post("/", (req, res) => {
   User.findOne(
     {username: req.body.username},
