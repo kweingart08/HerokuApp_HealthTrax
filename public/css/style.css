@@ -415,17 +415,8 @@ td {
     font-size: 20px;
   }
 
-  .links {
-    display: flex;
-    flex-direction: column;
-  }
-
   .registration {
     width: 100%;
-  }
-
-  nav {
-    flex-direction: column;
   }
 
   table, tbody, th, td, tr {
