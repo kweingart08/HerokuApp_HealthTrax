@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kweingart08/WDIR_Project2#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",

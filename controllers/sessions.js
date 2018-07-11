@@ -4,6 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users.js");
+const bcrypt = require("bcrypt");
 
 // ---------------------------------
 // MODELS
@@ -46,7 +47,7 @@ router.delete("/", (req, res) => {
 // When the user logs in, find the user and redirect to that users id page. If wrong, password, send error.
 router.post("/", (req, res) => {
   User.findOne({username: req.body.username}, (err, foundUser) => {
-    if(req.body.password == foundUser.password){
+    if(bcrypt.compareSync(req.body.password, foundUser.password)){
       req.session.currentUser = foundUser;
       res.redirect("/sessions/user/" + foundUser._id);
     } else {

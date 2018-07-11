@@ -3,6 +3,7 @@
 // ---------------------------------
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 // ---------------------------------
 // MODELS
@@ -26,7 +27,10 @@ router.post("/", (req, res) => {
   User.findOne(
     {username: req.body.username},
     (err, foundUser) => {
-      if(err){
+      if(foundUser){
+        res.send('Oops, that user already exists. Please log in or create a user with a different username. <a href="/">Go back</a>');
+      } else {
+        req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
         User.create(req.body, (err, createdUser) => {
           if(err) {
             res.send(err.message)
@@ -34,11 +38,8 @@ router.post("/", (req, res) => {
             res.redirect("/");
           }
       });
-      } else {
-        res.send('Oops, that user already exists. Please log in or create a user with a different username. <a href="/">Go back</a>');
-      }
     }
-  );
+  });
 });
 
 // ---------------------------------
