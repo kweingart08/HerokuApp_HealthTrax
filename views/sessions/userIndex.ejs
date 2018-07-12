@@ -34,10 +34,9 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h1 id="user-welcome">Welcome, <%=currentUser.username%>!</h1>
+
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <h1 id="user-welcome">Welcome,  <%=currentUser.username%>!</h1>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/sessions/user/<%=currentUser._id%>/newdoctor">Add New Doctor</a>
           </li>
