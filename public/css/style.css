@@ -92,11 +92,6 @@ h1 {
   color: rgb(0, 117, 193);
 }
 
-/* set hamburger bars to display none if using for collapsing */
-/* .links .icon {
-  display: none;
-} */
-
 /* form styles  */
 .registration {
   width: 50%;
@@ -384,32 +379,6 @@ td {
     padding-top: 0;
     padding-bottom: 15px;
   }
-  /* .links a {
-    if want to collapse start with display at none
-    display: none;
-  } */
-
-/* for collapsing nav bar */
-  /* .links a.icon {
-    float: right;
-    display: block;
-  }
-
-  .links.responsive {
-    position: relative;
-  }
-
-  .links.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .links.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  } */
 
   .nav-links {
     margin: 5px;
@@ -489,3 +458,8 @@ td {
   }
 
 }
+
+
+
+
+/* added styles for bootstrap */
