@@ -80,13 +80,13 @@
 
   - Create an archive button to archive any old doctors that are no longer being seen by that user.
   - Create an archive of information/dates visited for the doctor. So when someone edits the dates or notes, the old data is pushed to an archive database for that user under that doctor.
-  - Add the option to add family members. This would allow parents to add all of their children and be able to track the information more easily.
   - Add a search function from the users index route so that they can search for doctors that are within the database and add them to their doctors array.
   - Add a users setting tab so that the user can go in and update their username and password and possibly add additional information.
 
   Items that were not solved:
 
   - Right now, if the doctor is edited from the user's page, the doctor is also edited in the database. These should be separated, and the user based data (appointment dates and notes) should within the users model. Then the doctor's model would only include the doctor's contact information.
+  - Mobile nav links - tried to create hamburger and roll down links, but didn't complete that.
 ## Link to Live Site
   Here is the link to the live site so you can use the app!
   [https://thawing-reef-79440.herokuapp.com/]
