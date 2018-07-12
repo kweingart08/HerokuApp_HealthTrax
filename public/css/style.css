@@ -463,3 +463,13 @@ td {
 .form-control:hover {
   color: black;
 }
+
+
+#trax:hover {
+  color: rgba(0, 117, 193, 0.5);
+}
+
+#header-title:hover {
+  text-decoration: none;
+  color: rgba(0,0,0, 0.5);
+}
