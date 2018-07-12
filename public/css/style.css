@@ -442,5 +442,24 @@ td {
 
 /* added styles for bootstrap */
 .navbar-nav {
-  align-items: center;
+  align-items: left;
+}
+
+.nav-link {
+  /* border: 1px solid rgb(0, 117, 193);
+  border-radius: 5px; */
+  margin: 0 5px;
+  padding: 5px;
+}
+
+.form-control {
+  /* border: 1px solid rgb(0, 117, 193);
+  border-radius: 5px; */
+  margin: 0 5px;
+  font-family: Raleway;
+  color: rgba(0,0,0,.5);
+}
+
+.form-control:hover {
+  color: black;
 }
