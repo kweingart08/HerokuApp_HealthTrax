@@ -371,10 +371,6 @@ td {
     width: 100%;
   }
 
-/* remove nav flex if want to collapse */
-  nav {
-    flex-direction: column;
-  }
 
   .doctor-table {
     width: 100%;
