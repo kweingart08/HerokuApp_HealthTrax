@@ -8,9 +8,12 @@
     <!-- add nav partial  -->
     <nav>
       <% include partials/nav.ejs %>
-      <div class="links">
+      <div class="links" id="myNav">
         <a href="/sessions/new" class="nav-links">Log In</a>
         <a href="/users/new" class="nav-links">Register</a>
+
+        <!-- added icon for collapsing nav bar -->
+        <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a> -->
       </div>
     </nav>
 
@@ -20,5 +23,7 @@
         <p class="front-paragraph">All in one place.</p>
     </div>
 
+    <!-- started adding javascript to collapse navigation bar -->
+    <!-- <script type="text/javascript" src="/js/app.js"></script> -->
   </body>
 </html>
