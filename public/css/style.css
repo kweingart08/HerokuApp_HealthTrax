@@ -118,7 +118,7 @@ label {
   display: block;
 }
 
-input {
+/* input {
   width: 100%;
   margin: 10px 0;
   padding: 10px
@@ -126,14 +126,14 @@ input {
   border: 1px solid #808080;
   height: 25px;
   font-size: 16px;
-}
+} */
 
 input:focus {
   outline: 0;
   border: 1px solid rgb(0, 117, 193);
 }
 
-input[type="submit"]{
+/* input[type="submit"]{
   width: 50%;
   height: 50px;
   background: rgba(0, 117, 193, 0.8);
@@ -149,10 +149,10 @@ input[type="submit"]:hover {
   color: rgba(0, 117, 193, 0.8);
   background: #f9f6f6;
   border: 2px solid rgba(0, 117, 193, 0.8);
-}
+} */
 
 /* user index page style */
-#delete {
+/* #delete {
   text-decoration: none;
   padding: 10px;
   margin: 15px;
@@ -165,14 +165,14 @@ input[type="submit"]:hover {
   box-shadow: none;
   font-family: Raleway;
   width: auto;
-}
+} */
 
-#delete:hover {
+/* #delete:hover {
   cursor: pointer;
   color: rgba(0, 117, 193, 0.8);
   background: #f9f6f6;
   border: 2px solid rgba(0, 117, 193, 0.8);
-}
+} */
 
 .welcome {
   display: flex;
@@ -463,3 +463,6 @@ td {
 
 
 /* added styles for bootstrap */
+.navbar-nav {
+  align-items: center;
+}
