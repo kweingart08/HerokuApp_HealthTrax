@@ -133,46 +133,24 @@ label {
   border: 1px solid rgb(0, 117, 193);
 }
 
-/* input[type="submit"]{
-  width: 50%;
-  height: 50px;
+.new {
   background: rgba(0, 117, 193, 0.8);
   box-shadow: 2px 2px #d3d3d3;
-  font-size: 1.3em;
+  font-family: Raleway;
+  font-size: 16px;
   color: white;
   border: 0px;
   border-radius: 5px;
+  padding: 5px;
 }
 
-input[type="submit"]:hover {
+.new:hover {
   cursor: pointer;
   color: rgba(0, 117, 193, 0.8);
   background: #f9f6f6;
   border: 2px solid rgba(0, 117, 193, 0.8);
-} */
+}
 
-/* user index page style */
-/* #delete {
-  text-decoration: none;
-  padding: 10px;
-  margin: 15px;
-  font-size: 16px;
-  background: rgba(0, 117, 193, 0.8);
-  text-align: center;
-  color: white;
-  border-radius: 5px;
-  height: 40px;
-  box-shadow: none;
-  font-family: Raleway;
-  width: auto;
-} */
-
-/* #delete:hover {
-  cursor: pointer;
-  color: rgba(0, 117, 193, 0.8);
-  background: #f9f6f6;
-  border: 2px solid rgba(0, 117, 193, 0.8);
-} */
 
 .welcome {
   display: flex;
